@@ -1,0 +1,59 @@
+---
+import Button from '../ui/Button.astro';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<section class="section-padding bg-[#F8FAFC]" id="hero">
+  <div class="container-main">
+    <div class="max-w-3xl mx-auto text-center">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 bg-[#E0F2FE] border border-[#BAE6FD] text-[#0369A1] rounded-full px-4 py-1.5 text-sm font-semibold mb-8">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        Integracja w 1 dzień roboczy
+      </div>
+
+      <!-- H1 -->
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#0F172A] leading-tight mb-6">
+        Zautomatyzuj swój sklep na <span class="text-[#0369A1]">Allegro</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-lg sm:text-xl text-[#334155] leading-relaxed mb-10 max-w-2xl mx-auto">
+        Wystawiaj produkty, synchronizuj stany i aktualizuj ceny automatycznie. Oszczędź 15+ godzin tygodniowo i skup się na sprzedaży.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+        <Button href={`${base}kontakt`} variant="primary" size="lg">
+          Zacznij za darmo
+        </Button>
+        <Button href={`${base}#jak-dziala`} variant="outline" size="lg">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <polygon points="10 8 16 12 10 16 10 8"/>
+          </svg>
+          Zobacz jak działa
+        </Button>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-0 sm:divide-x sm:divide-[#E2E8F0] border border-[#E2E8F0] rounded-2xl bg-white px-6 py-6 sm:py-8">
+        <div class="flex flex-col items-center sm:px-8">
+          <span class="text-3xl font-bold text-[#0F172A]">500+</span>
+          <span class="text-sm text-[#334155] mt-1">aktywnych sklepów</span>
+        </div>
+        <div class="flex flex-col items-center sm:px-8">
+          <span class="text-3xl font-bold text-[#0F172A]">15h</span>
+          <span class="text-sm text-[#334155] mt-1">oszczędności tygodniowo</span>
+        </div>
+        <div class="flex flex-col items-center sm:px-8">
+          <span class="text-3xl font-bold text-[#0F172A]">99.7%</span>
+          <span class="text-sm text-[#334155] mt-1">gwarantowany uptime</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

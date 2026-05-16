@@ -1,0 +1,27 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import TestimonialCard from '../ui/TestimonialCard.astro';
+import { testimonials } from '../../data/testimonials';
+---
+
+<section class="section-padding bg-[#E8ECF1]" id="opinie">
+  <div class="container-main">
+    <SectionHeader
+      pretitle="Opinie klientów"
+      title="Co mówią nasi użytkownicy"
+      subtitle="Dołącz do ponad 500 sklepów, które zautomatyzowały sprzedaż na Allegro z AllegroAuto."
+      align="center"
+    />
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {testimonials.map((testimonial) => (
+        <TestimonialCard
+          quote={testimonial.quote}
+          name={testimonial.name}
+          role={testimonial.role}
+          initials={testimonial.initials}
+          rating={testimonial.rating}
+        />
+      ))}
+    </div>
+  </div>
+</section>

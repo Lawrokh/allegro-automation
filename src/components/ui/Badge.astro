@@ -1,0 +1,17 @@
+---
+export interface Props {
+  text: string;
+  variant?: 'accent' | 'default';
+}
+
+const { text, variant = 'accent' } = Astro.props;
+
+const variantClasses = {
+  accent: 'bg-[#E0F2FE] text-[#0369A1] border border-[#BAE6FD]',
+  default: 'bg-[#E8ECF1] text-[#334155] border border-[#E2E8F0]',
+};
+---
+
+<span class={`inline-block rounded-full px-3 py-1 text-xs font-semibold ${variantClasses[variant]}`}>
+  {text}
+</span>

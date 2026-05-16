@@ -1,0 +1,67 @@
+---
+const base = import.meta.env.BASE_URL;
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-[#0F172A] text-white">
+  <div class="container-main py-12 lg:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+      <!-- Brand column -->
+      <div class="md:col-span-1">
+        <a href={base} class="flex items-center gap-2 font-bold text-xl text-white hover:text-[#0EA5E9] transition-colors duration-150 cursor-pointer mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <span>AllegroAuto</span>
+        </a>
+        <p class="text-sm text-[#94A3B8] leading-relaxed">
+          Automatyzacja sprzedaży na Allegro dla polskich sklepów e-commerce.
+        </p>
+      </div>
+
+      <!-- Produkt -->
+      <div>
+        <h3 class="font-semibold text-white mb-4">Produkt</h3>
+        <ul class="space-y-3">
+          <li><a href={`${base}#funkcje`} class="text-sm text-[#94A3B8] hover:text-white transition-colors duration-150 cursor-pointer">Funkcje</a></li>
+          <li><a href={`${base}#cennik`} class="text-sm text-[#94A3B8] hover:text-white transition-colors duration-150 cursor-pointer">Cennik</a></li>
+          <li><a href={`${base}#jak-dziala`} class="text-sm text-[#94A3B8] hover:text-white transition-colors duration-150 cursor-pointer">Jak działa</a></li>
+          <li><a href={`${base}#faq`} class="text-sm text-[#94A3B8] hover:text-white transition-colors duration-150 cursor-pointer">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Zasoby -->
+      <div>
+        <h3 class="font-semibold text-white mb-4">Zasoby</h3>
+        <ul class="space-y-3">
+          <li><a href={`${base}blog`} class="text-sm text-[#94A3B8] hover:text-white transition-colors duration-150 cursor-pointer">Blog</a></li>
+          <li><a href={`${base}blog`} class="text-sm text-[#94A3B8] hover:text-white transition-colors duration-150 cursor-pointer">Poradniki</a></li>
+          <li><a href={`${base}blog`} class="text-sm text-[#94A3B8] hover:text-white transition-colors duration-150 cursor-pointer">Case studies</a></li>
+        </ul>
+      </div>
+
+      <!-- Kontakt -->
+      <div>
+        <h3 class="font-semibold text-white mb-4">Kontakt</h3>
+        <ul class="space-y-3">
+          <li><a href={`${base}kontakt`} class="text-sm text-[#94A3B8] hover:text-white transition-colors duration-150 cursor-pointer">Napisz do nas</a></li>
+          <li>
+            <a href="mailto:kontakt@allegroauto.pl" class="text-sm text-[#94A3B8] hover:text-white transition-colors duration-150 cursor-pointer">
+              kontakt@allegroauto.pl
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-[#1E293B] flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-[#64748B]">
+        &copy; {currentYear} AllegroAuto. Wszelkie prawa zastrzeżone.
+      </p>
+      <div class="flex gap-6">
+        <a href={`${base}polityka-prywatnosci`} class="text-xs text-[#64748B] hover:text-white transition-colors duration-150 cursor-pointer">Polityka prywatności</a>
+        <a href={`${base}regulamin`} class="text-xs text-[#64748B] hover:text-white transition-colors duration-150 cursor-pointer">Regulamin</a>
+      </div>
+    </div>
+  </div>
+</footer>

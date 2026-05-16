@@ -1,0 +1,67 @@
+---
+import Button from './Button.astro';
+import Badge from './Badge.astro';
+
+export interface Props {
+  name: string;
+  price: string;
+  period: string;
+  description: string;
+  features: { text: string; included: boolean }[];
+  badge?: string;
+  highlighted?: boolean;
+  ctaText: string;
+  ctaHref: string;
+}
+
+const { name, price, period, description, features, badge, highlighted = false, ctaText, ctaHref } = Astro.props;
+---
+
+<div class={`bg-white rounded-xl p-8 flex flex-col relative ${highlighted ? 'border-2 border-[#0369A1] shadow-lg' : 'border border-[#E2E8F0]'}`}>
+  {badge && (
+    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+      <Badge text={badge} variant="accent" />
+    </div>
+  )}
+  <div class="mb-6">
+    <h3 class="text-xl font-bold text-[#0F172A] mb-1">{name}</h3>
+    <p class="text-sm text-[#334155] mb-4">{description}</p>
+    <div class="flex items-end gap-1">
+      {period ? (
+        <>
+          <span class="text-4xl font-bold text-[#0F172A]">{price} zł</span>
+          <span class="text-[#334155] mb-1">/{period}</span>
+        </>
+      ) : (
+        <span class="text-3xl font-bold text-[#0F172A]">{price}</span>
+      )}
+    </div>
+  </div>
+
+  <ul class="space-y-3 mb-8 flex-1">
+    {features.map((feature) => (
+      <li class="flex items-start gap-3">
+        {feature.included ? (
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0369A1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-shrink-0" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        ) : (
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 flex-shrink-0" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        )}
+        <span class={`text-sm ${feature.included ? 'text-[#0F172A]' : 'text-[#94A3B8]'}`}>{feature.text}</span>
+      </li>
+    ))}
+  </ul>
+
+  <Button
+    href={ctaHref}
+    variant={highlighted ? 'primary' : 'outline'}
+    size="md"
+    class="w-full justify-center"
+  >
+    {ctaText}
+  </Button>
+</div>

@@ -1,0 +1,86 @@
+---
+import PageLayout from './PageLayout.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  publishDate: Date;
+  author: string;
+  authorTitle?: string;
+  tags: string[];
+}
+
+const { title, description, publishDate, author, authorTitle, tags } = Astro.props;
+
+const formattedDate = publishDate.toLocaleDateString('pl-PL', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const base = import.meta.env.BASE_URL;
+---
+
+<PageLayout title={`${title} | AllegroAuto Blog`} description={description} ogType="article">
+  <div class="section-padding">
+    <div class="container-main">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-sm text-[#334155] mb-8" aria-label="Breadcrumb">
+        <a href={base} class="hover:text-[#0369A1] transition-colors duration-150 cursor-pointer">Strona główna</a>
+        <span aria-hidden="true">/</span>
+        <a href={`${base}blog`} class="hover:text-[#0369A1] transition-colors duration-150 cursor-pointer">Blog</a>
+        <span aria-hidden="true">/</span>
+        <span class="text-[#0F172A] font-medium truncate max-w-xs">{title}</span>
+      </nav>
+
+      <div class="max-w-3xl mx-auto">
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2 mb-6">
+          {tags.map((tag) => (
+            <span class="bg-[#E0F2FE] text-[#0369A1] border border-[#BAE6FD] rounded-full px-3 py-1 text-xs font-semibold">
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <!-- Title -->
+        <h1 class="text-3xl sm:text-4xl font-bold text-[#0F172A] mb-6 leading-tight">{title}</h1>
+
+        <!-- Meta -->
+        <div class="flex items-center gap-4 pb-8 mb-8 border-b border-[#E2E8F0]">
+          <div class="w-10 h-10 rounded-full bg-[#E0F2FE] flex items-center justify-center text-[#0369A1] font-semibold text-sm flex-shrink-0">
+            {author.split(' ').map(w => w[0]).join('').slice(0, 2)}
+          </div>
+          <div>
+            <p class="font-semibold text-[#0F172A] text-sm">{author}</p>
+            {authorTitle && <p class="text-xs text-[#334155]">{authorTitle}</p>}
+          </div>
+          <div class="ml-auto text-right">
+            <time class="text-sm text-[#334155]" datetime={publishDate.toISOString()}>
+              {formattedDate}
+            </time>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <article class="prose prose-slate max-w-none prose-headings:font-bold prose-headings:text-[#0F172A] prose-a:text-[#0369A1] prose-a:no-underline hover:prose-a:text-[#0EA5E9] prose-code:bg-[#E8ECF1] prose-code:rounded prose-code:px-1 prose-code:py-0.5 prose-code:text-[#0F172A] prose-code:before:content-none prose-code:after:content-none">
+          <slot />
+        </article>
+
+        <!-- Back link -->
+        <div class="mt-12 pt-8 border-t border-[#E2E8F0]">
+          <a
+            href={`${base}blog`}
+            class="inline-flex items-center gap-2 text-sm font-semibold text-[#0369A1] hover:text-[#0EA5E9] transition-colors duration-150 cursor-pointer"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="19" y1="12" x2="5" y2="12"/>
+              <polyline points="12 19 5 12 12 5"/>
+            </svg>
+            Wróć do bloga
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</PageLayout>

@@ -1,0 +1,65 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import { steps } from '../../data/steps';
+---
+
+<section class="section-padding bg-[#E8ECF1]" id="jak-dziala">
+  <div class="container-main">
+    <SectionHeader
+      pretitle="Jak działa"
+      title="Zacznij automatyzować w 3 krokach"
+      subtitle="Prosty proces wdrożenia bez wiedzy technicznej. Nasz zespół przeprowadzi Cię przez każdy etap."
+      align="center"
+    />
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0 relative">
+      {steps.map((step, i) => (
+        <div class="relative flex flex-col items-center text-center md:px-8">
+          <!-- Connector arrow (between cards) -->
+          {i < steps.length - 1 && (
+            <div class="hidden md:flex absolute right-0 top-10 translate-x-1/2 z-10 items-center justify-center w-8 h-8">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0369A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </div>
+          )}
+
+          <!-- Step card -->
+          <div class="bg-white border border-[#E2E8F0] rounded-xl p-8 w-full hover:border-[#0369A1] transition-colors duration-150">
+            <!-- Number -->
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#0369A1] text-white font-bold text-xl mb-5">
+              {step.number}
+            </div>
+
+            <!-- Icon -->
+            <div class="mb-4 flex justify-center">
+              {step.icon === 'plug' && (
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0369A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 22v-5"/>
+                  <path d="M9 8V2"/>
+                  <path d="M15 8V2"/>
+                  <path d="M18 8H6a1 1 0 0 0-1 1v4a7 7 0 0 0 14 0V9a1 1 0 0 0-1-1z"/>
+                </svg>
+              )}
+              {step.icon === 'settings' && (
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0369A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                </svg>
+              )}
+              {step.icon === 'zap' && (
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0369A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
+                </svg>
+              )}
+            </div>
+
+            <h3 class="text-xl font-bold text-[#0F172A] mb-3">{step.title}</h3>
+            <p class="text-sm text-[#334155] leading-relaxed">{step.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

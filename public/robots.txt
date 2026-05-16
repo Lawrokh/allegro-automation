@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://Lawrokh.github.io/allegro-automation/sitemap-index.xml

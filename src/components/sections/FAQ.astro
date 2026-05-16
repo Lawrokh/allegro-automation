@@ -1,0 +1,23 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import FAQItem from '../ui/FAQItem.astro';
+import { faqItems } from '../../data/faq';
+---
+
+<section class="section-padding bg-[#F8FAFC]" id="faq">
+  <div class="container-main">
+    <SectionHeader
+      title="Najczęstsze pytania"
+      subtitle="Nie znalazłeś odpowiedzi? Napisz do nas — odpowiemy w ciągu 24 godzin."
+      align="center"
+    />
+    <div class="max-w-3xl mx-auto bg-white border border-[#E2E8F0] rounded-xl px-6 sm:px-8 divide-y divide-[#E2E8F0]">
+      {faqItems.map((item, i) => (
+        <FAQItem
+          question={item.question}
+          answer={item.answer}
+        />
+      ))}
+    </div>
+  </div>
+</section>

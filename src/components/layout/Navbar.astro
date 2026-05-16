@@ -1,0 +1,95 @@
+---
+const base = import.meta.env.BASE_URL;
+
+const navLinks = [
+  { href: `${base}#funkcje`, label: 'Funkcje' },
+  { href: `${base}#cennik`, label: 'Cennik' },
+  { href: `${base}blog`, label: 'Blog' },
+  { href: `${base}kontakt`, label: 'Kontakt' },
+];
+---
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#E2E8F0]">
+  <nav class="container-main flex items-center justify-between h-16">
+    <!-- Logo -->
+    <a href={base} class="flex items-center gap-2 font-bold text-xl text-[#0F172A] hover:text-[#0369A1] transition-colors duration-150 cursor-pointer">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0369A1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
+      </svg>
+      <span>AllegroAuto</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <div class="hidden md:flex items-center gap-8">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="text-sm font-medium text-[#334155] hover:text-[#0369A1] transition-colors duration-150 cursor-pointer"
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+
+    <!-- Desktop CTA -->
+    <div class="hidden md:flex items-center">
+      <a
+        href={`${base}kontakt`}
+        class="bg-[#0369A1] text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-[#0EA5E9] transition-colors duration-150 cursor-pointer"
+      >
+        Bezpłatny trial
+      </a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <div class="md:hidden relative group">
+      <button
+        type="button"
+        aria-label="Otwórz menu"
+        class="p-2 text-[#334155] hover:text-[#0369A1] transition-colors duration-150 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0369A1] rounded-lg"
+        id="mobile-menu-btn"
+        onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+
+      <!-- Mobile dropdown -->
+      <div
+        id="mobile-menu"
+        class="hidden absolute right-0 top-12 w-56 bg-white border border-[#E2E8F0] rounded-xl shadow-lg py-2 z-50"
+      >
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="block px-4 py-2.5 text-sm font-medium text-[#334155] hover:text-[#0369A1] hover:bg-[#F8FAFC] transition-colors duration-150 cursor-pointer"
+          >
+            {link.label}
+          </a>
+        ))}
+        <div class="border-t border-[#E2E8F0] mt-2 pt-2 px-4 pb-1">
+          <a
+            href={`${base}kontakt`}
+            class="block w-full text-center bg-[#0369A1] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#0EA5E9] transition-colors duration-150 cursor-pointer"
+          >
+            Bezpłatny trial
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('mobile-menu-btn');
+    if (menu && btn && !menu.contains(e.target as Node) && !btn.contains(e.target as Node)) {
+      menu.classList.add('hidden');
+    }
+  });
+</script>

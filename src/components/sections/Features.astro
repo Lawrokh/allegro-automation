@@ -1,0 +1,25 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import FeatureCard from '../ui/FeatureCard.astro';
+import { features } from '../../data/features';
+---
+
+<section class="section-padding bg-[#F8FAFC]" id="funkcje">
+  <div class="container-main">
+    <SectionHeader
+      pretitle="Funkcje"
+      title="Wszystko czego potrzebujesz do automatyzacji"
+      subtitle="Jedna platforma do zarządzania wszystkimi aspektami sprzedaży na Allegro. Od wystawiania produktów po analizę wyników."
+      align="center"
+    />
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {features.map((feature) => (
+        <FeatureCard
+          icon={feature.icon}
+          title={feature.title}
+          description={feature.description}
+        />
+      ))}
+    </div>
+  </div>
+</section>

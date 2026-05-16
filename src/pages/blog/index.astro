@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+import BlogPostCard from '../../components/ui/BlogPostCard.astro';
+
+const allPosts = await getCollection('blog', ({ data }) => {
+  return !data.draft;
+});
+
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+---
+
+<PageLayout
+  title="Blog | AllegroAuto"
+  description="Artykuły i poradniki o automatyzacji sprzedaży na Allegro. Dowiedz się jak wystawiać produkty, synchronizować stany i zwiększać sprzedaż."
+>
+  <section class="section-padding">
+    <div class="container-main">
+      <!-- Header -->
+      <div class="max-w-2xl mb-12">
+        <p class="text-sm font-semibold uppercase tracking-wider text-[#0369A1] mb-3">Blog</p>
+        <h1 class="text-3xl sm:text-4xl font-bold text-[#0F172A] mb-4">
+          Wiedza o automatyzacji Allegro
+        </h1>
+        <p class="text-lg text-[#334155]">
+          Praktyczne poradniki, case studies i aktualności ze świata automatyzacji e-commerce.
+        </p>
+      </div>
+
+      {sortedPosts.length === 0 ? (
+        <div class="text-center py-16 text-[#334155]">
+          <p class="text-lg">Brak opublikowanych artykułów.</p>
+        </div>
+      ) : (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {sortedPosts.map((post) => (
+            <BlogPostCard
+              title={post.data.title}
+              description={post.data.description}
+              publishDate={post.data.publishDate}
+              tags={post.data.tags}
+              slug={post.slug}
+              featured={post.data.featured}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</PageLayout>

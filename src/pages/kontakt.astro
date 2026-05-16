@@ -1,0 +1,73 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import ContactForm from '../components/forms/ContactForm.astro';
+---
+
+<PageLayout
+  title="Kontakt | AllegroAuto"
+  description="Skontaktuj się z nami. Odpowiemy w ciągu 24 godzin roboczych. Chętnie omówimy Twoje potrzeby w zakresie automatyzacji Allegro."
+>
+  <section class="section-padding">
+    <div class="container-main">
+      <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-12">
+          <p class="text-sm font-semibold uppercase tracking-wider text-[#0369A1] mb-3">Kontakt</p>
+          <h1 class="text-3xl sm:text-4xl font-bold text-[#0F172A] mb-4">
+            Skontaktuj się z nami
+          </h1>
+          <p class="text-lg text-[#334155]">
+            Odpowiemy w ciągu 24 godzin roboczych
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          <!-- Contact info -->
+          <div class="space-y-6">
+            <div class="bg-white border border-[#E2E8F0] rounded-xl p-6">
+              <div class="w-10 h-10 bg-[#E0F2FE] rounded-lg flex items-center justify-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0369A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-[#0F172A] mb-1">E-mail</h3>
+              <a href="mailto:kontakt@allegroauto.pl" class="text-sm text-[#0369A1] hover:text-[#0EA5E9] transition-colors duration-150 cursor-pointer">
+                kontakt@allegroauto.pl
+              </a>
+            </div>
+
+            <div class="bg-white border border-[#E2E8F0] rounded-xl p-6">
+              <div class="w-10 h-10 bg-[#E0F2FE] rounded-lg flex items-center justify-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0369A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.39 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.79a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-[#0F172A] mb-1">Telefon</h3>
+              <a href="tel:+48123456789" class="text-sm text-[#0369A1] hover:text-[#0EA5E9] transition-colors duration-150 cursor-pointer">
+                +48 123 456 789
+              </a>
+              <p class="text-xs text-[#334155] mt-1">Pn–Pt, 9:00–17:00</p>
+            </div>
+
+            <div class="bg-white border border-[#E2E8F0] rounded-xl p-6">
+              <div class="w-10 h-10 bg-[#E0F2FE] rounded-lg flex items-center justify-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0369A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+              <h3 class="font-semibold text-[#0F172A] mb-1">Czas odpowiedzi</h3>
+              <p class="text-sm text-[#334155]">Do 24 godzin roboczych</p>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <div class="lg:col-span-2 bg-white border border-[#E2E8F0] rounded-xl p-8">
+            <ContactForm />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>

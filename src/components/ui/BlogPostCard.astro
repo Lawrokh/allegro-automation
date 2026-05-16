@@ -1,0 +1,53 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  publishDate: Date;
+  tags: string[];
+  slug: string;
+  featured?: boolean;
+}
+
+const { title, description, publishDate, tags, slug, featured = false } = Astro.props;
+
+const formattedDate = publishDate.toLocaleDateString('pl-PL', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const base = import.meta.env.BASE_URL;
+const postUrl = `${base}blog/${slug}`;
+---
+
+<article class={`bg-white border rounded-xl p-6 flex flex-col gap-4 hover:border-[#0369A1] transition-colors duration-150 ${featured ? 'border-[#0369A1]' : 'border-[#E2E8F0]'}`}>
+  {featured && (
+    <span class="inline-block bg-[#E0F2FE] text-[#0369A1] border border-[#BAE6FD] rounded-full px-3 py-1 text-xs font-semibold w-fit">
+      Wyróżniony
+    </span>
+  )}
+  <div class="flex-1">
+    <h2 class="text-lg font-bold text-[#0F172A] mb-2 leading-snug hover:text-[#0369A1] transition-colors duration-150">
+      <a href={postUrl}>{title}</a>
+    </h2>
+    <p class="text-sm text-[#334155] leading-relaxed">{description}</p>
+  </div>
+  <div class="flex flex-wrap gap-2">
+    {tags.slice(0, 3).map((tag) => (
+      <span class="bg-[#E8ECF1] text-[#334155] rounded-full px-2.5 py-0.5 text-xs font-medium">
+        {tag}
+      </span>
+    ))}
+  </div>
+  <div class="flex items-center justify-between pt-2 border-t border-[#E2E8F0]">
+    <time class="text-xs text-[#334155]" datetime={publishDate.toISOString()}>
+      {formattedDate}
+    </time>
+    <a
+      href={postUrl}
+      class="text-sm font-semibold text-[#0369A1] hover:text-[#0EA5E9] transition-colors duration-150 cursor-pointer"
+    >
+      Czytaj dalej &rarr;
+    </a>
+  </div>
+</article>
